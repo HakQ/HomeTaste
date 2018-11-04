@@ -3,16 +3,19 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import { index } from '.';
-import {Navigation} from './components/Navigation';
+import Navigation from './components/Navigation';
+import Planner from './components/Planner';
 
 class App extends Component {
   render() {
-    return (
-      <Router>        
+    return (  
+      <Router>   
       <div className="App">
-      <Navigation />
+        <Navigation />
+        <Route exact path="/Planner" Component={Planner} />
       </div>
       </Router>
+    
     );
   }
 }
