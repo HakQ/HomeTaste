@@ -5,6 +5,7 @@ import './App.css';
 import { index } from '.';
 import Navigation from './components/Navigation';
 import Planner from './components/Planner';
+import SignIn from './components/SignIn';
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
       <Router>   
       <div className="App">
         <Navigation />
-        <Route exact path="/Planner" Component={Planner} />
+        <Route path="/planner" component={Planner} />
+        <Route path="/signIn" component={SignIn} />
       </div>
       </Router>
     

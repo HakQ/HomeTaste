@@ -12,14 +12,11 @@ export default class Navigation extends Component {
             <Link to="/">HomeTaste</Link>
           </Navbar.Brand>
         </Navbar.Header>
-          <Nav pullRight>
-            <NavItem eventKey={1} componentClass={Link} to="/">
-              Home
-            </NavItem>
-            <NavItem eventKey={2} componentClass={Link} href="/Planner" to="/Planner">
+          <Nav>
+            <NavItem eventKey={1} componentClass={Link} href="planner" to="/planner">
               Planner
             </NavItem>
-            <NavItem eventKey={3} componentClass={Link} href="/SignIn" to="/SignIn">
+            <NavItem eventKey={2} componentClass={Link} href="signIn" to="/signIn">
               Sign In
             </NavItem>
           </Nav>
