@@ -6,6 +6,7 @@ import { index } from '.';
 import Navigation from './components/Navigation';
 import Planner from './components/Planner';
 import SignIn from './components/SignIn';
+import Home from './components/Home';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
       <Router>   
       <div className="App">
         <Navigation />
+        <Route exact path="/" component={Home} />
         <Route path="/planner" component={Planner} />
         <Route path="/signIn" component={SignIn} />
       </div>

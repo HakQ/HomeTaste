@@ -6,7 +6,7 @@ import './Navigation.css'
 export default class Navigation extends Component {
   render() {
     return (
-      <Navbar default collapseOnSelect>
+      <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
             <Link to="/">HomeTaste</Link>
@@ -16,6 +16,8 @@ export default class Navigation extends Component {
             <NavItem eventKey={1} componentClass={Link} href="planner" to="/planner">
               Planner
             </NavItem>
+            </Nav>
+            <Nav>
             <NavItem eventKey={2} componentClass={Link} href="signIn" to="/signIn">
               Sign In
             </NavItem>
