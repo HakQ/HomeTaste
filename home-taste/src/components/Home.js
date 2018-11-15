@@ -1,21 +1,35 @@
 import React from 'react'
 import BackgroundImage from 'react-background-image-loader';
 
+function ListFood(props){
+    return(<div>
+    <p>Title: {props.Label}</p>
+    <p>Image: {props.Image}</p>
+    <p>Recepie: {props.Url}</p>
+    <p>Yield: {props.Yield}</p>
+    <p>Ingredients: {props.Ingredients}</p>
+    </div>);
+}
+
 export default class Home extends React.Component {
 
-    foodSearch(event){
+    constructor(props){
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
 
-        let url = "deac5308423f7cc3a692e3a8c9d108c6" + event.target.value;
-    
-        fetch(url).
-        then((response) => {
-            console.log(Response.status);
-            
-            if(Response.status == 200){
-                return response.json;
-            }else{
-                throw "Not Found";
-            }
+    foodSearch(event){
+        //https://www.food2fork.com/api/search?key={API_KEY}&q=shredded%2
+        let API_KEY = "d6f0630f1a2543e76bbf7b3ab2b20d8a";
+        let API_CALL = `https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken`;
+         fetch(API_CALL)
+        .then((response) => {      
+            if(response.status === 200){
+                console.log("something here"+response.json);
+                return response.json();
+            }     
         })
         .then((jsonData) => {
             console.log(jsonData);
@@ -26,11 +40,12 @@ export default class Home extends React.Component {
         });
     }
     render() {
+        
         return (
             <div> 
                 <form>
-                    <label>Home Taste Recepie Search</label>
-                    <input type="text" maxLength="50" className="form-control" onChange={this.props.changeHandler}/>
+                    <label><h1>Home Taste Recepie Search</h1></label>   
+                    <input type="text" maxLength="50"  onChange={(e) => this.foodSearch(e)}/>
                 </form>
             </div>
         )
