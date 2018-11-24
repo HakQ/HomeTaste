@@ -13,10 +13,10 @@ export default class Home extends React.Component {
     foodSearch(e){
         //https://www.food2fork.com/api/search?key={API_KEY}&q=shredded%2
 
-        let recipeName = e.target.value;
+        const recipeName = e.target.value;
         e.preventDefault();
-        let API_KEY = "d6f0630f1a2543e76bbf7b3ab2b20d8a";
-        let API_CALL = `https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
+        const API_KEY = "d6f0630f1a2543e76bbf7b3ab2b20d8a";
+        const API_CALL = `https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
          fetch(API_CALL)
         .then((response) => {      
             if(response.status === 200){
