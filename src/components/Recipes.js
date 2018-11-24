@@ -1,18 +1,5 @@
 import React from 'react'
 
-/*export default class ListFood extends React.Component {
-    render(){
-        return(
-         <div className="container">
-            <div className="row">
-                
-                
-            </div>
-         </div>   
-        )
-    }
-}*/
-
 const Recipes = props => (
     <div className="container">
     <div className="row">
