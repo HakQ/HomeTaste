@@ -5,7 +5,7 @@ export default class SignIn extends React.Component {
         return (
             <div>
     
-              <p>shitttt</p>
+             
             </div>
         )
     }
