@@ -37,7 +37,7 @@ export default class Home extends React.Component {
         return (
             <div> 
                 <form>
-                    <label><h1>Home Taste Recepie Search</h1></label>   
+                    <label><h1>Home Taste Recipe Search</h1></label>   
                 </form>
                 <input type="text" onChange={(e) => this.foodSearch(e)}/>
                 <Recipes recipes={this.state.recipes}/>
