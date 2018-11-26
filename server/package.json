@@ -25,14 +25,10 @@
     "passport-local": "^1.0.0",
     "pg": "^7.6.1",
     "pg-hstore": "^2.3.2",
-<<<<<<< HEAD
     "sequelize": "^4.41.2",
     "speakingurl": "^14.0.1"
-=======
-    "sequelize": "^4.41.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
->>>>>>> 52225259e60746a1fa75e7892b509cac6f7b637b
   }
 }
