@@ -22,7 +22,30 @@ module.exports = (sequelize,DataTypes)=>{
 			validate:{
 				notEmpty:true,
 			},
-		}
+		},
+		description:{
+      		type: DataTypes.TEXT,
+      		allowNull: false,
+      		validate: {
+        		notEmpty: true,
+      		},
+		},
+	    instruction:{
+	    	type: DataTypes.TEXT,
+	    	allowNull: false,
+	      	validate: {
+	        	notEmpty: true,
+	      	},
+	    },
+	    likes: {
+	    	type: DataTypes.INTEGER,
+	    },
+	    label:{
+	    	type: DataTypes.STRING,
+	    },
+	    ingredient:{
+	    	type: DataTypes.STRING,
+		},
 	});
 
 	Recipe.associate = (models)=>{

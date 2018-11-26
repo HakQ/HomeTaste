@@ -22,7 +22,19 @@ module.exports = (sequelize,DataTypes)=>{
 			validate:{
 				notEmpty:true,
 			},
-		}
+		},
+		comment:{
+	      type: DataTypes.TEXT,
+	    },
+	    time: {
+	      type: DataTypes.DATE,
+	    },
+	    serve:{
+	      type: DataTypes.INTEGER,
+	    },
+	    numbDish:{
+	      type: DataTypes.INTEGER,
+	    },
 	});
 
 	Meal.associate = (models)=>{
