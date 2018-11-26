@@ -11,22 +11,25 @@ router.get('/error', (req, res) => {
 
 
 router.post('/signup', (req,res) => {
+  console.log(req.body);
   User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     username: req.body.username,
     email: req.body.email,
+    password: req.body.password,
     password_hash: req.body.password,
   }).then((user) => {
     res.json({ msg: "user created" });
-  }).catch(() => {
+  }).catch((e) => {
+    console.error(e);
     res.status(400).json({ msg: "error creating user" });
   });
 });
 
 
 router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/auth/error' }),
+  passport.authenticate('local', { failureRedirect: '/error' }),
   (req, res) => {
     res.json({
       id: req.user.id,
@@ -44,7 +47,7 @@ router.get('/logout', (req, res) => {
 
 
 router.get('/profile',
-  passport.redirectIfNotLoggedIn('/auth/error'),
+  passport.redirectIfNotLoggedIn('/error'),
   (req, res) => {
     res.json({ msg: "This is the profile page for: "+req.user.email });
 });
