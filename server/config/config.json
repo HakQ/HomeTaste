@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "Rameatz",
-    "password": "neovalley123",
-    "database": "HomeTaste_Example2",
+    "username": "ctp_user",
+    "password": "ctp_user",
+    "database": "HomeTaste_Example1",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },

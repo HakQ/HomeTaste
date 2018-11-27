@@ -50,7 +50,7 @@ module.exports = (sequelize,DataTypes)=>{
 
 	Recipe.associate = (models)=>{
 		models.Recipe.belongsTo(models.User);
-		models.Recipe.belongsToMany(models.Meal);
+		models.Recipe.belongsTo(models.Meal);
 	}
 
 	return Recipe;
