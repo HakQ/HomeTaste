@@ -2,20 +2,24 @@ const express = require('express');
 const models = require('../models');
 const Redirect = require('../middlewares/redirect');
 const getSlug = require('speakingurl');
+
 const router = express.Router();
 const Meal = models.Meal;
 
 
 //find all the meal
 router.get('/', (req, res) => { 
-  Meal.findAll().then(meals => {
-      res.json(meals);
-    }).catch(err => {
+  Meal.findAll({
+    include:[{model: models.User}]
+  })
+  .then(allMeals => {
+      res.json(allMeals);
+  })
+  .catch(err => {
       console.log(err);
       res.status(500).json({msg: "error", details: err});
-    });
+  });
 });
-
 
 
 //find by id
@@ -31,7 +35,7 @@ router.get('/:id', (req, res) => {
 });
 
 //adding a new meal
-router.post('/', (req, res) => {
+router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   Meal.create(req.body).then(meals => {    
       // Send created meals to client
       res.json(meals);
