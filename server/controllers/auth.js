@@ -22,6 +22,7 @@ router.post('/signup', (req,res) => {
   }).then((user) => {
     res.json({ msg: "user created" });
   }).catch((e) => {
+    res.json(e);
     console.error(e);
     res.status(400).json({ msg: "error creating user" });
   });
@@ -31,12 +32,13 @@ router.post('/signup', (req,res) => {
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/error' }),
   (req, res) => {
-    res.json({
+    /*res.json({
       id: req.user.id,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
       email: req.user.email,
-    });
+    });*/
+    res.json("successful sign in");
   });
 
 

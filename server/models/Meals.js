@@ -16,24 +16,11 @@ module.exports = (sequelize,DataTypes)=>{
 				notEmpty:true,
 			},
 		},
-		creator:{
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate:{
-				notEmpty:true,
-			},
-		},
 		comment:{
 	      type: DataTypes.TEXT,
 	    },
 	    time: {
 	      type: DataTypes.DATE,
-	    },
-	    serve:{
-	      type: DataTypes.INTEGER,
-	    },
-	    numbDish:{
-	      type: DataTypes.INTEGER,
 	    },
 	});
 
