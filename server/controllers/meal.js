@@ -8,10 +8,18 @@ const Meal = models.Meal;
 
 
 //find all the meal
-router.get('/', (req, res) => { 
-  Meal.findAll({
-    include:[{model: models.User}]
+router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => { 
+  Meal.findAll({ 
+    where:{
+      userId: req.user.id
+    },
+    include:[{
+      model: models.User,
+    }],
   })
+  /*({
+    include:[{model: models.User}]
+  })*/
   .then(allMeals => {
     res.json(allMeals);
   })
@@ -42,7 +50,7 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 });
 
 //find by id
-router.get('/:username/:slug', (req, res) => { 
+/*router.get('/:username/:slug', (req, res) => { 
   Meal.findOne({ 
     where:{
       slug: req.params.slug
@@ -61,7 +69,7 @@ router.get('/:username/:slug', (req, res) => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
   });
-});
+});*/
 
 //update Meal
 router.put('/:username/:slug', Redirect.ifNotLoggedIn('/login'), Redirect.ifNotAuthorized('/meal'),(req, res) => {
