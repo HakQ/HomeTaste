@@ -8,14 +8,6 @@ module.exports = (sequelize,DataTypes)=>{
 				notEmpty:true,
 			},
 		},
-		slug:{
-			type: DataTypes.STRING,
-			allowNull: false,
-			unique: "compositeIndex",
-			validate:{
-				notEmpty:true,
-			},
-		},
 		creator:{
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -45,6 +37,9 @@ module.exports = (sequelize,DataTypes)=>{
 	    },
 	    ingredient:{
 	    	type: DataTypes.STRING,
+		},
+		private:{
+			type: DataTypes.BOOLEAN,
 		},
 	});
 
