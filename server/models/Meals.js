@@ -8,14 +8,6 @@ module.exports = (sequelize,DataTypes)=>{
 				notEmpty:true,
 			},
 		},
-		slug:{
-			type: DataTypes.STRING,
-			allowNull: false,
-			unique: "compositeIndex",
-			validate:{
-				notEmpty:true,
-			},
-		},
 		comment:{
 	      type: DataTypes.TEXT,
 	    },

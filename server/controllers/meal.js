@@ -7,7 +7,7 @@ const router = express.Router();
 const Meal = models.Meal;
 
 
-//find all the meal
+/*find all the meal the user made once the user is log in*/ 
 router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => { 
   Meal.findAll({ 
     where:{
@@ -17,9 +17,6 @@ router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => {
       model: models.User,
     }],
   })
-  /*({
-    include:[{model: models.User}]
-  })*/
   .then(allMeals => {
     res.json(allMeals);
   })
@@ -33,7 +30,6 @@ router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => {
 router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   //using the association from sequelize
   req.user.createMeal({
-    slug:getSlug(req.body.name.toLowerCase()),
     name: req.body.name.toLowerCase(),
     comment: req.body.comment,
     time: req.body.time
@@ -46,6 +42,56 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   .catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
+  });
+});
+
+//update Meal
+router.put('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/meal'),*/(req, res) => {
+  Meal.update({
+      name: req.body.name.toLowerCase(),
+      comment: req.body.comment,
+      time: req.body.time
+  }, 
+  { 
+    where: {
+      name: req.body.name.toLowerCase(),
+      userId: req.user.id,
+    },
+    include: [{
+      model: models.User,
+      where:{
+        username:req.user.username,
+      },
+    }],
+  })
+  .then(() => {
+      res.status(200).json( { mgs: "Updated Successfully"} );
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});
+
+//delete  Meal
+router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/posts'),*/ (req, res) => {
+  Meal.destroy({
+    where: {
+      name: req.body.name,
+      userId: req.user.id,
+    },
+    include: [{
+      model: models.User,
+      where: {
+        username: req.user.username,
+      },
+    }],
+  })
+  .then(() => {
+    res.status(200).json( { msg: "Deleted Successfully"} );
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json({msg: "error", details: err});
   });
 });
 
@@ -72,7 +118,7 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 });*/
 
 //update Meal
-router.put('/:username/:slug', Redirect.ifNotLoggedIn('/login'), Redirect.ifNotAuthorized('/meal'),(req, res) => {
+/*router.put('/:username/:slug', Redirect.ifNotLoggedIn('/login'), Redirect.ifNotAuthorized('/meal'),(req, res) => {
   Meal.update({
       slug:getSlug(req.body.name.toLowerCase()),
       name: req.body.name.toLowerCase(),
@@ -118,6 +164,6 @@ router.delete('/:username/:slug', Redirect.ifNotLoggedIn('/login'), Redirect.ifN
       console.log(err);
       res.status(500).json({msg: "error", details: err});
   });
-});
+});*/
 
 module.exports = router;
