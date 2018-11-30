@@ -41,6 +41,18 @@ module.exports = (sequelize,DataTypes)=>{
 		private:{
 			type: DataTypes.BOOLEAN,
 		},
+		/*
+		calories:{
+			type: DataTypes.INTEGER,
+		},
+		minuteNeeded{
+			type: DataTypes.INTEGER,
+		},
+		serves{
+			type: DataTypes.INTEGER,
+		},
+		photo{}
+		*/
 	});
 
 	Recipe.associate = (models)=>{

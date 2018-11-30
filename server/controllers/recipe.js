@@ -6,6 +6,23 @@ const router = express.Router();
 const Recipe = models.Recipe;
 
 
+//return all recipes that are not check as private recipe
+router.get('/public', (req, res) => { 
+  Recipe.findAll({ 
+    where:{
+      private: false
+    },
+  })
+  .then(allRecipes => {
+    res.json(allRecipes);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});
+
+
 /*find all the Recipe the user made once the user is log in*/ 
 router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => { 
   Recipe.findAll({ 

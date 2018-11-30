@@ -14,6 +14,14 @@ module.exports = (sequelize,DataTypes)=>{
 	    time: {
 	      type: DataTypes.DATE,
 	    },
+	    /*
+	    serves{
+			type: DataTypes.INTEGER,
+		},
+		numberOfDish{
+			type: DataTypes.INTEGER,
+		},
+		*/
 	});
 
 	Meal.associate = (models)=>{
