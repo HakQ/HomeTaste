@@ -13,7 +13,7 @@ export default class Navigation extends Component {
           </Navbar.Brand>
         </Navbar.Header>
           <Nav>
-            <NavItem eventKey={1} componentClass={Link} href="planner" to="/planner">
+            <NavItem eventKey={1} componentClass={Link} href="calendarView" to="/CalendarView">
               Planner
             </NavItem>
             </Nav>
