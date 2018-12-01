@@ -1,5 +1,7 @@
 import React from 'react'
 import Recipes from './Recipes';
+//import homepage from './images/homepage';
+import homepage from '../components/images/homepage.jpeg';
 
 export default class Home extends React.Component {
 
@@ -38,8 +40,8 @@ export default class Home extends React.Component {
             <div> 
                 <form>
                     <label><h1>Home Taste Recipe Search</h1></label>   
-                </form>
-                <input type="text" onChange={(e) => this.foodSearch(e)}/>
+                </form>  
+                <input type="text" onChange={(e) => this.foodSearch(e)}/>             
                 <Recipes recipes={this.state.recipes}/>
             </div>
         )
