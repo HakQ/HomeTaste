@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import SignIn from './components/SignIn';
 import Home from './components/Home';
 import CalendarView from './components/CalendarView';
+import RecipeForm from './components/recipeForm/RecipeForm';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <Navigation />
         <Route exact path="/" component={Home} />
         <Route path="/calendarView" component={CalendarView} />
+        <Route path="/recipeForm" component={RecipeForm} />
         <Route path="/signIn" component={SignIn} />
       </div>
       </Router>

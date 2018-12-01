@@ -22,6 +22,11 @@ export default class Navigation extends Component {
               Sign In
             </NavItem>
           </Nav>
+          <Nav>
+            <NavItem eventKey={3} componentClass={Link} href="recipeForm" to="/RecipeForm">
+              Recipe Form
+            </NavItem>
+          </Nav>
       </Navbar>
     )
   }

@@ -52,9 +52,9 @@ class CalendarView extends Component {
           defaultDate={new Date()}
           defaultView="week"
           events={this.state.events}
-          onSelectEvent={event => alert("Title: " + event.title + "\n Calaries: " + event.calories + "\n servings: " + event.servings + "\n comments:\n" + event.comments + "\n descriptions:\n" + event.descriptions + "\n instructions:\n" + event.instructions + "\n ingredients\n" + event.ingredients )}
-          //onSelectEvent={() => window.open("http://localhost:3000/" + this.state.event.title)}
-          style={{ height: "100vh" }}
+          //onSelectEvent={event => alert("Title: " + event.title + "\n Calaries: " + event.calories + "\n servings: " + event.servings + "\n comments:\n" + event.comments + "\n descriptions:\n" + event.descriptions + "\n instructions:\n" + event.instructions + "\n ingredients\n" + event.ingredients )}
+          onSelectEvent={(e) => window.open("http://localhost:3000/" + e.id)}   
+           style={{ height: "100vh" }}
         />
       </div>
     );
