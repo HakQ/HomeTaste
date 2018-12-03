@@ -98,7 +98,12 @@ router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized(
 
 /****************ASSOCIATING RECIPE WITH MEAL**********/
 router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findById(req.params.id)
+  Meal.findOne({
+    where:{
+      id: req.params.id,
+      userId: req.user.id,
+    }
+  })
   .then(meal => {
     meal.getRecipes();
   })
@@ -113,7 +118,12 @@ router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 
 //creating an association between meal and recipe
 router.put('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findById(req.params.id)
+  Meal.findOne({
+    where:{
+      id: req.params.id,
+      userId: req.user.id,
+    }
+  })
   .then(meal =>{
     meal.setRecipes([req.params.rId]);
   })
