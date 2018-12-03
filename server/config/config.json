@@ -2,7 +2,7 @@
   "development": {
     "username": "ctp_user",
     "password": "ctp_user",
-    "database": "HomeTasteEx3",
+    "database": "HomeTasteEx4",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },

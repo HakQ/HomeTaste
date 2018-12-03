@@ -4,6 +4,8 @@ const Redirect = require('../middlewares/redirect');
 
 const router = express.Router();
 const Meal = models.Meal;
+const Recipe = models.Recipe;
+const MealRecipe = models.MealRecipe;
 
 
 /*find all the meal the user made once the user is log in*/ 
@@ -93,5 +95,58 @@ router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized(
       res.status(500).json({msg: "error", details: err});
   });
 });
+
+/****************ASSOCIATING RECIPE WITH MEAL**********/
+router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
+  Meal.findAll({
+    where:{
+      userId: req.user.id,
+      id: req.params.id,
+    },
+    include:[{
+      model: models.Recipe,
+      through:{
+        attributes:['recipeId', 'mealId'],
+      },
+    }],
+  })
+  .then(allMeals => {
+    res.json(allMeals.Recipes);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});
+
+router.put('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
+  Meal.findAll({
+    where:{
+      userId: req.user.id,
+      id: req.params.id,
+    },
+  })
+  .then(meal =>{
+    myMeal = meal;
+
+    return Recipe.findAll({
+      where:{
+        userId: req.user.id,
+        id: req.params.rId,
+      },
+    });
+  })
+  .then(recipe =>{
+    res.json(myMeal);
+  })
+  /*.then(() => {
+    res.status(200).json( { msg: "Successfully Added Recipe To Meal"} );
+  })*/
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});
+
 
 module.exports = router;
