@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 
 class Recipe extends React.Component {
 
-    
     state = {
       activeRecipe: []
     }
     
     render() {
       const recipe = this.state.activeRecipe;
+      console.log("inside recipe");
       return (
+        
         <div className="container">
           { this.state.activeRecipe.length !== 0 &&
             <div className="active-recipe">

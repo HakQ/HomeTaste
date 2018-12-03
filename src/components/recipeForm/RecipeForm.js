@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
-import Recipes from './Recipes';
+//import Recipes from './Recipes';
 import AddRecipe from './AddRecipe';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+//import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import '../../App.css';
 

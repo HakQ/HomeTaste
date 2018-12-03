@@ -3,6 +3,12 @@ import Recipes from './Recipes';
 //import homepage from './images/homepage';
 import homepage from '../components/images/homepage.jpeg';
 
+let backimg = {
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${homepage})`
+};
+
 export default class Home extends React.Component {
 
     constructor(props){
@@ -38,7 +44,7 @@ export default class Home extends React.Component {
         
         return (
             <div> 
-                <form>
+                <form style={backimg}>
                     <label><h1>Home Taste Recipe Search</h1></label>   
                 </form>  
                 <input type="text" onChange={(e) => this.foodSearch(e)}/>             

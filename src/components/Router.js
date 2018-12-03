@@ -3,13 +3,14 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import App from "../App";
 import Recipe from "./Recipe";
+import Recipes from './Recipes';
 
 const Router = () => (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" component={App} exact />
+   <switch>
+      <Route path="/" component={Recipes} exact/>
       <Route path="/recipe/:id" component={Recipe} />
-    </Switch>
+   </switch>
   </BrowserRouter>
 );
 
