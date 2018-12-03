@@ -98,20 +98,12 @@ router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized(
 
 /****************ASSOCIATING RECIPE WITH MEAL**********/
 router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findAll({
-    where:{
-      userId: req.user.id,
-      id: req.params.id,
-    },
-    include:[{
-      model: models.Recipe,
-      through:{
-        attributes:['recipeId', 'mealId'],
-      },
-    }],
+  Meal.findById(req.params.id)
+  .then(meal => {
+    meal.getRecipes();
   })
-  .then(allMeals => {
-    res.json(allMeals.Recipes);
+  .then(asRecipe => {
+    res.json(asRecipe)
   })
   .catch(err => {
     console.log(err);
@@ -119,29 +111,15 @@ router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   });
 });
 
+//creating an association between meal and recipe
 router.put('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findAll({
-    where:{
-      userId: req.user.id,
-      id: req.params.id,
-    },
-  })
+  Meal.findById(req.params.id)
   .then(meal =>{
-    myMeal = meal;
-
-    return Recipe.findAll({
-      where:{
-        userId: req.user.id,
-        id: req.params.rId,
-      },
-    });
+    meal.setRecipes([req.params.rId]);
   })
-  .then(recipe =>{
-    res.json(myMeal);
+  .then(result=>{
+    res.json(result);
   })
-  /*.then(() => {
-    res.status(200).json( { msg: "Successfully Added Recipe To Meal"} );
-  })*/
   .catch(err => {
     console.log(err);
     res.status(500).json({msg: "error", details: err});
