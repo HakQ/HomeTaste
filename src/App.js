@@ -7,8 +7,18 @@ import SignIn from './components/SignIn';
 import Home from './components/Home';
 import CalendarView from './components/CalendarView';
 import RecipeForm from './components/recipeForm/RecipeForm';
+import Recipe from "./components/Recipe";
 
-class App extends Component {
+
+class App extends React.Component {
+  state = {
+    recipe: null
+  }
+
+  handleRecipe = (arr)=>{
+    this.setState = arr
+  }
+  
   render() {
     return (  
       <Router>   
@@ -18,9 +28,10 @@ class App extends Component {
         <Route path="/calendarView" component={CalendarView} />
         <Route path="/recipeForm" component={RecipeForm} />
         <Route path="/signIn" component={SignIn} />
+        
+        <Route path="/recipe/:id" component={Recipe} />
       </div>
       </Router>
-    
     );
   }
 }

@@ -8,7 +8,7 @@ const Recipes = props => (
     { props.recipes.map((recipe) => {
       return (
         <div key={recipe.title} className="col-md-4" style={{ marginBottom:"2rem" }}>
-          <div className="recipes__box">
+          <div className="recipes__box" data-recipe={1}>
             <img 
               className="recipe__box-img" 
               src={recipe.image_url} 
@@ -23,10 +23,8 @@ const Recipes = props => (
               </div>
               <button className="recipe_buttons">     
               <Link to={{ 
-                  pathname: `/recipe/${recipe.recipe_id}`,
-                  state: { recipe: recipe.title }
-                  
-                }}>View Recipe</Link>
+                  pathname: `/recipe/${recipe.recipe_id}`
+                  }}>View Recipe</Link>
               </button>
           </div>
         </div>
