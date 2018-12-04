@@ -16,6 +16,7 @@ router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => {
     },
     include:[{
       model: models.User,
+      model: models.Recipe,
     }],
   })
   .then(allMeals => {
@@ -30,12 +31,16 @@ router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => {
 //adding a new meal
 router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   //using the association from sequelize
-  req.user.createMeal({
+  req.user.createMeal(
+  {
     name: req.body.name.toLowerCase(),
     comment: req.body.comment,
     time: req.body.time
+  }, 
+  {
+    include: [Recipe]
   })
-  .then(meals => {    
+  .then(mealRecipe => {    
     // Send created meals to client
     //res.json(meals);
     res.status(200).json( { mgs: "successfully Created" } );
@@ -45,6 +50,27 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
     res.status(500).json({msg: "error", details: err});
   });
 });
+
+/*  
+  Jin's Code
+  return req.user.createMeal({
+    name: req.body.name.toLowerCase(),
+    comment: req.body.comment,
+    time: req.body.time
+  }, {
+    include: [Recipe]
+  })
+  .then(meal => meal.addRecipe([1]))
+  .then(mealRecipe => {    
+    // Send created meals to client
+    //res.json(meals);
+    res.status(200).json( { mgs: "successfully Created" } );
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});*/
 
 //update Meal
 router.put('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/meal'),*/(req, res) => {
@@ -98,14 +124,14 @@ router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized(
 
 /****************ASSOCIATING RECIPE WITH MEAL**********/
 router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findOne({
+  return Meal.findOne({
     where:{
       id: req.params.id,
       userId: req.user.id,
     }
   })
   .then(meal => {
-    meal.getRecipes();
+    return meal.getRecipes()
   })
   .then(asRecipe => {
     res.json(asRecipe)
@@ -118,14 +144,19 @@ router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 
 //creating an association between meal and recipe
 router.put('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findOne({
+  return Meal.findOne({
     where:{
       id: req.params.id,
       userId: req.user.id,
-    }
+    },
+    include:[{
+      model: models.Recipe,
+    }],
   })
-  .then(meal =>{
-    meal.setRecipes([req.params.rId]);
+  .then(meal => {
+    //res.json(meal)
+    //console.log('-----meal', meal.Recipe)
+    return meal.addRecipe([2]);
   })
   .then(result=>{
     res.json(result);
