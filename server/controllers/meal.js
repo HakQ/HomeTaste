@@ -16,6 +16,7 @@ router.get('/', Redirect.ifNotLoggedIn('/login'), (req, res) => {
     },
     include:[{
       model: models.User,
+      model: models.Recipe,
     }],
   })
   .then(allMeals => {
@@ -98,17 +99,17 @@ router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized(
 
 /****************ASSOCIATING RECIPE WITH MEAL**********/
 router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findOne({
+  return Meal.findOne({
     where:{
       id: req.params.id,
       userId: req.user.id,
     }
   })
   .then(meal => {
-    meal.getRecipes();
+    return meal.getRecipes();
   })
   .then(asRecipe => {
-    res.json(asRecipe)
+    return res.json(asRecipe)
   })
   .catch(err => {
     console.log(err);
@@ -118,17 +119,37 @@ router.get('/:id/recipe',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 
 //creating an association between meal and recipe
 router.put('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
-  Meal.findOne({
+  return Meal.findOne({
     where:{
       id: req.params.id,
       userId: req.user.id,
     }
   })
   .then(meal =>{
-    meal.setRecipes([req.params.rId]);
+    return meal.addRecipes([req.params.rId]);
   })
   .then(result=>{
-    res.json(result);
+    res.status(200).json( { msg: "added recipe to meal Successfully"} );
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+  });
+});
+
+//delete an association between meal and recipe
+router.delete('/:id/recipe/:rId',Redirect.ifNotLoggedIn('/login'), (req, res) => {
+  return Meal.findOne({
+    where:{
+      id: req.params.id,
+      userId: req.user.id,
+    }
+  })
+  .then(meal =>{
+    return meal.removeRecipes([req.params.rId]);
+  })
+  .then(result=>{
+    res.status(200).json( { msg: "remove recipe to meal Successfully"} );
   })
   .catch(err => {
     console.log(err);
