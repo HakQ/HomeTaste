@@ -5,7 +5,7 @@ import homepage from '../components/images/homepage.jpeg';
 
 let backimg = {
     width: "100%",
-    height: "100%",
+    height: "400px",
     backgroundImage: `url(${homepage})`
 };
 
@@ -47,7 +47,9 @@ export default class Home extends React.Component {
                 <form style={backimg}>
                     <label><h1>Home Taste Recipe Search</h1></label>   
                 </form>  
-                <input type="text" onChange={(e) => this.foodSearch(e)}/>             
+                <div className={"col-md-8 centerMe"}>
+                    <input className={"form-control"} type="text" onChange={(e) => this.foodSearch(e)} placeholder=" Search for your food"/>
+                </div>             
                 <Recipes recipes={this.state.recipes}/>
             </div>
         )
