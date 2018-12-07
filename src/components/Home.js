@@ -1,6 +1,5 @@
 import React from 'react'
 import Recipes from './Recipes';
-//import homepage from './images/homepage';
 import homepage from '../components/images/homepage.jpeg';
 
 let backimg = {
@@ -18,6 +17,7 @@ export default class Home extends React.Component {
         };
     }
 
+    //fetches info from the API 
     foodSearch(e){
         //https://www.food2fork.com/api/search?key={API_KEY}&q=shredded%2
 
