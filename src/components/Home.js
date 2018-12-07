@@ -45,7 +45,7 @@ export default class Home extends React.Component {
         return (
             <div> 
                 <form style={backimg}>
-                    <label><h1>Home Taste Recipe Search</h1></label>   
+                    <label><h1 className={"welcomeTitle"}>Home Taste Recipe Search</h1></label>   
                 </form>  
                 <div className={"col-md-8 centerMe"}>
                     <input className={"form-control"} type="text" onChange={(e) => this.foodSearch(e)} placeholder=" Search for your food"/>
