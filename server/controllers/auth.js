@@ -29,8 +29,7 @@ router.post('/signup', (req,res) => {
 });
 
 
-router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/error' }),
+router.post('/login',passport.authenticate('local', { failureRedirect: '/error' }),
   (req, res) => {
     /*res.json({
       id: req.user.id,
@@ -38,7 +37,8 @@ router.post('/login',
       lastName: req.user.lastName,
       email: req.user.email,
     });*/
-    res.json("successful sign in");
+    console.log('----id', req.user.id)
+    res.status(200).json({userId: req.user.id});
   });
 
 
