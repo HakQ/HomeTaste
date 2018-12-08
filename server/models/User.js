@@ -52,7 +52,6 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     models.User.hasMany(models.Recipe);
-    models.User.hasMany(models.Meal);
     //models.User.hasMany(models.UserLabel);
   }
 

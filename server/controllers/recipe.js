@@ -47,11 +47,12 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   //using the association from sequelize
   req.user.createRecipe({
     name: req.body.name.toLowerCase(),
-    creator: req.user.username,
+    calories: req.body.calories,
+    time: req.body.time,
+    serves: req.body.serves,
+    minuteNeeded: req.body.minuteNeeded,
     description: req.body.description,
     instruction: req.body.instruction,
-    likes: req.body.likes,
-    label: req.body.label,
     ingredient: req.body.ingredient,
     private: req.body.private,
   })

@@ -8,12 +8,17 @@ module.exports = (sequelize,DataTypes)=>{
 				notEmpty:true,
 			},
 		},
-		creator:{
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate:{
-				notEmpty:true,
-			},
+		calories:{
+			type: DataTypes.INTEGER,
+		},
+		time: {
+	      type: DataTypes.DATE,
+	    },
+	    serves:{
+			type: DataTypes.INTEGER,
+		},
+		minuteNeeded:{
+			type: DataTypes.INTEGER,
 		},
 		description:{
       		type: DataTypes.TEXT,
@@ -29,35 +34,17 @@ module.exports = (sequelize,DataTypes)=>{
 	        	notEmpty: true,
 	      	},
 	    },
-	    likes: {
-	    	type: DataTypes.INTEGER,
-	    },
-	    label:{
-	    	type: DataTypes.STRING,
-	    },
 	    ingredient:{
 	    	type: DataTypes.STRING,
 		},
 		private:{
 			type: DataTypes.BOOLEAN,
 		},
-		/*
-		calories:{
-			type: DataTypes.INTEGER,
-		},
-		minuteNeeded{
-			type: DataTypes.INTEGER,
-		},
-		serves{
-			type: DataTypes.INTEGER,
-		},
-		photo{}
-		*/
+		//photo{}
 	});
 
 	Recipe.associate = (models)=>{
 		models.Recipe.belongsTo(models.User);
-		models.Recipe.belongsToMany(models.Meal,{through: "MealRecipe"});
 	}
 
 	return Recipe;
