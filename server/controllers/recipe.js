@@ -103,7 +103,7 @@ router.put('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/R
 router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/posts'),*/ (req, res) => {
   Recipe.destroy({
     where: {
-      name: req.body.name,
+      name: req.body.name.toLowerCase(),
       userId: req.user.id,
     },
     include: [{
