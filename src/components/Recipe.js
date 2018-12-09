@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 class Recipe extends React.Component {
+ 
+  handleBoolean(evt){
+    //evt.preventDefault();
+    window.location.reload();
+    
+  }
     render() {
       const {recipe} = this.props;
       return (
@@ -17,8 +23,9 @@ class Recipe extends React.Component {
               <p className="active-recipe__website">Website: 
                 <span><a href={recipe.f2f_url}>{recipe.f2f_url}</a></span>
               </p>
-              <button className="active-recipe__button">
-                <Link to="/">Go Home</Link>
+              <iframe src= {recipe.f2f_url} width="100%" height="700px"></iframe>
+              <button className="active-recipe__button" onClick={this.handleBoolean}>
+                Go Home
               </button>
             </div>
         </div>
