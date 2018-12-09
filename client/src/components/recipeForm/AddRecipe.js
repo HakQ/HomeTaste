@@ -8,12 +8,10 @@ import { FormControl } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Checkbox } from 'react-bootstrap';
-
-import Recipes from "./Recipes"
-
-import apple from '../images/apple.png'
-import defaultPic from '../images/default.png'
-
+import Recipes from "./Recipes";
+import apple from '../images/apple.png';
+import defaultPic from '../images/default.png';
+import axios from 'axios';
 
 class AddRecipe extends Component {
   constructor(){
@@ -22,7 +20,6 @@ class AddRecipe extends Component {
       newRecipe:{},
       comments: null,
       title: "",
-
     }
   }
 
@@ -37,22 +34,25 @@ class AddRecipe extends Component {
   }
 
   handleSubmit(e){
+    e.preventDefault();
     if(this.refs.title.value === ''){
       alert('Title is required');
-    } else {
-
-      console.log(this.refs.title.value);
-      console.log(this.refs.calories.value);
+    } 
+    else {
+      //add the info to the backEnd
       console.log(this.refs.startTime.value);
-      console.log(this.refs.servings.value);
-      console.log(this.refs.minutesNeeded.value);
-      console.log(this.refs.comments.value);
-      console.log(this.refs.instructions.value);
-      console.log(this.refs.ingredients.value);
-      console.log(this.refs.private.value);
-
+      axios.post('/recipe',{
+        name: this.refs.title.value,
+        calories: this.refs.calories.value,
+        time: this.refs.startTime.value,
+        serves: this.refs.servings.value,
+        minutesNeeded: this.refs.minutesNeeded.value,
+        description: this.refs.comments.value,
+        instruction: this.refs.instructions.value,
+        ingredient: this.refs.ingredients.value,
+        private: this.refs.private.value,
+      }).then(res => alert('your recipe is created'));
       this.setState({newRecipe: {
-        id: uuid.v4(),
         title: this.refs.title.value,
         calories: this.refs.calories.value,
         startTime: this.refs.startTime.value,
@@ -64,11 +64,10 @@ class AddRecipe extends Component {
         private: this.refs.private.value,
         //category: this.refs.category.value
       }}, function(){
-        //console.log(this.state);
+        //console.log(this.state); adding this to the the mother of this component
         this.props.addRecipe(this.state.newRecipe);
       });
     }
-    e.preventDefault();
   }
 
   render() {
@@ -116,16 +115,14 @@ class AddRecipe extends Component {
                   <input type="text" className="form-control" id="inputEmail4" placeholder="Calories" ref="calories"/>
                 </div>
               </div>
-
-
               <br />
 
               <div className="row justify-content-center" >
                 <div className = "col-2">
                   <label for="inputEmail4">Start Time</label>
                 </div>
-                <div className = "col-4">
-                  <input type="time" className="form-control" id="inputEmail4" ref="startTime"/>
+                <div className = "col-10">
+                  <input type="datetime-local" className="form-control" id="inputEmail4" ref="startTime"/>
                 </div>
               </div>
 
