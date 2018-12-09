@@ -6,6 +6,8 @@
     background-image: none;
     border: none;
     border-radius: 0;
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
   }
   
   .navbar-default .navbar-nav > li > a {

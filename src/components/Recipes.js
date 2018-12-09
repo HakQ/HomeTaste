@@ -52,9 +52,11 @@ class Recipes extends React.Component {
                     { recipe.publisher }
                   </span></p>
                 </div>
-                <button className="recipe_buttons" onClick={this.handleRecipe} data-index={indx}>     
+                <div className="recipe_buttons">
+                  <button className="btn btn-primary" onClick={this.handleRecipe} data-index={indx}>     
                   View Recipe
-                </button>
+                  </button>
+                </div>
             </div>
           </div>
         ))

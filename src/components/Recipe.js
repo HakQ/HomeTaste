@@ -23,10 +23,13 @@ class Recipe extends React.Component {
               <p className="active-recipe__website">Website: 
                 <span><a href={recipe.f2f_url}>{recipe.f2f_url}</a></span>
               </p>
-              <iframe src= {recipe.f2f_url} width="100%" height="700px"></iframe>
-              <button className="active-recipe__button" onClick={this.handleBoolean}>
+              <div className="active-recipe-button">
+                <button className="btn btn-primary" onClick={this.handleBoolean}>
                 Go Home
-              </button>
+                </button>
+              </div>
+              <iframe src= {recipe.f2f_url} width="100%" height="700px"></iframe>
+              
             </div>
         </div>
       );
