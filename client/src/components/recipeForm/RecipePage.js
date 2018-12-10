@@ -27,7 +27,7 @@ export default class RecipePage extends Component {
 
 	render() {
 		console.log(this.props)
-		const {calories, category, comments, ingredients, instructions, servings, title, minutesNeeded, image} = this.props.event; 
+		const {calories, category, description, ingredient, instruction, serves, name, minutesNeeded, image} = this.props.event; 
 		return( 
 			<div class="row text-center">
 
@@ -37,23 +37,23 @@ export default class RecipePage extends Component {
 
 				<div class = "col-8">
 
-					<h1>{title}</h1>
+					<h1>{name}</h1>
 
 		            <img src={require('../images/default.png')} height="200px" width="200px" />
 
 					<h6>Calories: {calories}</h6>
-					<h6>Servings: {servings}</h6>
+					<h6>serves: {serves}</h6>
 					<h6>Minutes Needed: {minutesNeeded}</h6>
 
-					<h2> Comments: </h2>
-					<h6>{comments}</h6>
+					<h2> description: </h2>
+					<h6>{description}</h6>
 
 
-					<h2> Ingredients: </h2>
-					<h6>{ingredients}</h6>
+					<h2> ingredient: </h2>
+					<h6>{ingredient}</h6>
 
-					<h2> Instructions: </h2>
-					<h6>{instructions}</h6>
+					<h2> instruction: </h2>
+					<h6>{instruction}</h6>
 
 					<button onClick={() => this.props.turnOnBoolean()}>Go Back</button>
 

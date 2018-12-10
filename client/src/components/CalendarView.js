@@ -8,6 +8,8 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import apple from './images/apple.png'
 
+import axios from 'axios';
+
 const propTypes = {}
 
 //import {BrowserRouter, Route } from 'react-router-dom'
@@ -15,6 +17,9 @@ const propTypes = {}
 const localizer = Calendar.momentLocalizer(moment);
 
 //[year, month, day, hour, minute, second, millisecond]
+
+
+
 
 class CalendarView extends Component {
 
@@ -33,362 +38,22 @@ class CalendarView extends Component {
         //   title: "thing 2"
         // },
         {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
+          //id: uuid.v4(),
+          name: "chicken and brocoli",
           image: {apple},
           calories: 256,
-          servings: 4,
+          serves: 4,
           minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 2, 9, 30),
+          //comments: "some comments",
+          description: "best DAM FOOOODDSDSS!!!",
+          instruction: "just do it",
+          ingredient: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
+          //category: "chicken",
+          //[year, month, day, hour, minute, second, millisecond] //month start count from 0
+          start: new Date(2018, 11, 9, 9, 30),
           //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 2, 10, 30),
+          end: new Date(2018, 11, 9, 9, 30),
         },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 2, 13, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 2, 14, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 2, 18, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 2, 19, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 2, 9, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 2, 10, 30),
-        },
-        // ****************** ****************** ****************** ****************** ****************** ******************
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 3, 8, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 3, 9, 30),
-        },
-
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 3, 12, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 3, 13, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 3, 17, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 3, 18, 30),
-        },
-
-        // ****************** ****************** ****************** ****************** ****************** ******************
-
-// ****************** ****************** ****************** ****************** ****************** ******************
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 4, 9, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 4, 10, 30),
-        },
-
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 4, 13, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 4, 14, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 4, 18, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 4, 19, 30),
-        },
-
-        // ****************** ****************** ****************** ****************** ****************** ******************
-
-// ****************** ****************** ****************** ****************** ****************** ******************
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 5, 8, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 5, 9, 30),
-        },
-
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 5, 12, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 5, 13, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 5, 17, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 5, 18, 30),
-        },
-
-        // ****************** ****************** ****************** ****************** ****************** ******************
-
-
-// ****************** ****************** ****************** ****************** ****************** ******************
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 6, 9, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 6, 10, 30),
-        },
-
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 6, 13, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 6, 14, 30),
-        },
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 6, 18, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 6, 19, 30),
-        },
-
-        // ****************** ****************** ****************** ****************** ****************** ******************
-
-
-
-
-// ****************** ****************** ****************** ****************** ****************** ******************
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 7, 8, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 7, 9, 30),
-        },
-
-        {
-          id: uuid.v4(),
-          title: "chicken and brocoli",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best DAM FOOOODDSDSS!!!",
-          instructions: "just do it",
-          ingredients: "put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in put tings in ",
-          category: "chicken",
-          //[year, month, day, hour, minute, second, millisecond]
-          start: new Date(2018, 11, 7, 12, 30),
-          //start: new Date(moment().add(3, "hours")),
-          end: new Date(2018, 11, 7, 13, 30),
-        },
-
-
-        // ****************** ****************** ****************** ****************** ****************** ******************
-
-
-
-
-
-        {
-          id: uuid.v4(),
-          title: "curry chicken",
-          image: {apple},
-          calories: 256,
-          servings: 4,
-          minutesNeeded: 30,
-          comments: "some comments",
-          descriptions: "best curry chicken!!!",
-          instructions: "just do it",
-          ingredients: "curry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chickencurry + chicken",
-          category: "chicken",
-          //start: new Date(2018, 10, 22, 15, 30),
-          start: new Date(moment().add(1, "hours")),
-          end: new Date(moment().add(2, "hours")),
-        },
-
       ],
 
       boolean: true, 
@@ -398,10 +63,23 @@ class CalendarView extends Component {
     };
   }
 
-// ComponentDidMount() {
-//   axios
-// }
+  componentDidMount() {
+    axios.get('/recipe').then(recipeArray=>{
+      let data = recipeArray.data;
+      for(let i = 0; i < data.length;i++){
+        let time = new Date(data[i].time);
+        let timeEnd = new Date(data[i].timeEnd);
+        data[i].start = time;
+        data[i].end =  timeEnd;
+        //console.log(data[i]);
+      }
+
+      this.setState({events:data})
+    })
+  }
   
+
+
 // this.setState({check: !this.state.check})
 
 onSelectEvent = (e) => {
