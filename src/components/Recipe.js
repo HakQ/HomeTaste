@@ -1,11 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 class Recipe extends React.Component {
  
   handleBoolean(evt){
-    //evt.preventDefault();
     window.location.reload();
     
   }
@@ -28,7 +26,7 @@ class Recipe extends React.Component {
                 Go Home
                 </button>
               </div>
-              <iframe src= {recipe.f2f_url} width="100%" height="700px"></iframe>
+              <iframe className="recipe-frame" src= {recipe.f2f_url} width="100%" height="700px"></iframe>
               
             </div>
         </div>

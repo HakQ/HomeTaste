@@ -19,6 +19,9 @@ export default class Home extends React.Component {
 
     //fetches info from the API 
     foodSearch(e){
+        if(e.target.value.length === 0){
+            window.location.reload();
+        }
         //https://www.food2fork.com/api/search?key={API_KEY}&q=shredded%2
 
         const recipeName = e.target.value;
@@ -30,7 +33,6 @@ export default class Home extends React.Component {
          fetch(API_CALL)
         .then((response) => {      
             if(response.status === 200){
-                console.log("something here "+response.json);
                 return response.json();
             }     
         })
