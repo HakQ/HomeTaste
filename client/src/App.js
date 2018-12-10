@@ -8,6 +8,7 @@ import Home from './components/Home';
 import CalendarView from './components/CalendarView';
 import RecipeForm from './components/recipeForm/RecipeForm';
 import RecipePage from './components/recipeForm/RecipePage';
+import SignUp from './components/SignUp';
 import axios from 'axios';
 
 
@@ -21,8 +22,12 @@ class App extends Component {
     }
   }
 
+  onFirstChange = (e) => this.setState({firstName: e.target.value})
+  onLastChange = (e) => this.setState({lastName: e.target.value})
+  onUsernameChange = (e) => this.setState({username: e.target.value})
   onEmailChange = (e) => this.setState({email: e.target.value})
   onPasswordChange = (e) => this.setState({password:e.target.value})
+
   // setUserId = (id) => this.setState({userId:id})
 
 
@@ -34,6 +39,19 @@ class App extends Component {
     })
     .then(res =>{
       this.setState({userId: res.data.userId})
+    })
+  }
+
+  handleSignUp = (e) => 
+  {
+    e.preventDefault();
+    axios.post('/signup', 
+    {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
     })
   }
 
@@ -54,6 +72,17 @@ class App extends Component {
             userId={this.state.userId}
             />}
           />
+        <Route path="/signUp"
+          render ={(routeProps) => <SignUp 
+            onFirstChange={this.onFirstChange}  
+            onLastChange={this.onLastChange}
+            onUsernameChange={this.onUsernameChange}
+            onEmailChange={this.onEmailChange}  
+            onPasswordChange={this.onPasswordChange}
+            handleSignUp={this.handleSignUp}
+            userId={this.state.userId}
+            />}
+        />
       </div>
       </Router>
     

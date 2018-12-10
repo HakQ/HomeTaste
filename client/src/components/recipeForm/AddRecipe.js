@@ -13,6 +13,7 @@ import Recipes from "./Recipes"
 
 import apple from '../images/apple.png'
 import defaultPic from '../images/default.png'
+import axios from 'axios'
 
 
 class AddRecipe extends Component {
@@ -126,7 +127,7 @@ class AddRecipe extends Component {
                 </div>
                 <div className = "col-4">
                   <input type="time" className="form-control" id="inputEmail4" ref="startTime"/>
-                </div>
+                </div>    
               </div>
 
               <br />
