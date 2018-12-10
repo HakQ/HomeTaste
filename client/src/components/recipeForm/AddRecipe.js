@@ -45,6 +45,7 @@ class AddRecipe extends Component {
         name: this.refs.title.value,
         calories: this.refs.calories.value,
         time: this.refs.startTime.value,
+        timeEnd: this.refs.endTime.value,
         serves: this.refs.servings.value,
         minutesNeeded: this.refs.minutesNeeded.value,
         description: this.refs.comments.value,
@@ -101,7 +102,7 @@ class AddRecipe extends Component {
                 <label for="inputEmail4">Title</label>
               </div>
               <div className = "col-8">
-                <input type="text" className="form-control" id="inputEmail4" placeholder="Title" ref="title"/>
+                <input required type="text" className="form-control" id="inputEmail4" placeholder="Title" ref="title"/>
               </div>
             </div>
 
@@ -112,7 +113,7 @@ class AddRecipe extends Component {
                   <label for="inputEmail4">Calories</label>
                 </div>
                 <div className = "col-4">
-                  <input type="text" className="form-control" id="inputEmail4" placeholder="Calories" ref="calories"/>
+                  <input required type="text" className="form-control" id="inputEmail4" placeholder="Calories" ref="calories"/>
                 </div>
               </div>
               <br />
@@ -122,18 +123,31 @@ class AddRecipe extends Component {
                   <label for="inputEmail4">Start Time</label>
                 </div>
                 <div className = "col-10">
-                  <input type="datetime-local" className="form-control" id="inputEmail4" ref="startTime"/>
+                  <input required type="datetime-local" className="form-control" id="inputEmail4" ref="startTime"/>
                 </div>
               </div>
 
               <br />
+
+
+              <div className="row justify-content-center" >
+                <div className = "col-2">
+                  <label for="inputEmail4">End Time</label>
+                </div>
+                <div className = "col-10">
+                  <input required type="datetime-local" className="form-control" id="inputEmail4" ref="endTime"/>
+                </div>
+              </div>
+
+              <br />
+
 
               <div className="row justify-content-center" >
                 <div className = "col-2">
                   <label for="inputEmail4">Servings</label>
                 </div>
                 <div className = "col-4">
-                  <input type="text" className="form-control" id="inputEmail4" placeholder="Servings" ref="servings"/>
+                  <input required type="text" className="form-control" id="inputEmail4" placeholder="Servings" ref="servings"/>
                 </div>
               </div>
 
@@ -144,7 +158,7 @@ class AddRecipe extends Component {
                   <label for="inputEmail4">Minutes Needed</label>
                 </div>
                 <div className = "col-4">
-                  <input type="text" className="form-control" id="inputEmail4" placeholder="30 min" ref="minutesNeeded"/>
+                  <input required type="text" className="form-control" id="inputEmail4" placeholder="30 min" ref="minutesNeeded"/>
                 </div>
               </div>
 
@@ -161,7 +175,7 @@ class AddRecipe extends Component {
               <div className="row justify-content-center" >
                 <div className = "col-10">
                   <label for="inputEmail4">Comments</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="18" ref="comments"></textarea>
+                  <textarea required class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="18" ref="comments"></textarea>
                 </div>
               </div>
 
@@ -174,14 +188,14 @@ class AddRecipe extends Component {
               <div className="row justify-content-center" >
                 <div className = "col-11">
                   <label for="inputEmail4">Ingredients</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="20" ref="ingredients"></textarea>
+                  <textarea required class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="20" ref="ingredients"></textarea>
                 </div>
               </div>
 
               <div className="row justify-content-center" >
                 <div className = "col-11">
                   <label for="inputEmail4">Instructions</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="20" ref="instructions"></textarea>
+                  <textarea required class="form-control" id="exampleFormControlTextarea1" placeholder="Place Text Here" rows="20" ref="instructions"></textarea>
                 </div>
               </div>
 

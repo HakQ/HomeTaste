@@ -68,11 +68,12 @@ class CalendarView extends Component {
       let data = recipeArray.data;
       for(let i = 0; i < data.length;i++){
         let time = new Date(data[i].time);
+        let timeEnd = new Date(data[i].timeEnd);
         data[i].start = time;
-        data[i].end =  time;
+        data[i].end =  timeEnd;
         //console.log(data[i]);
       }
-      
+
       this.setState({events:data})
     })
   }
