@@ -22,7 +22,6 @@ export default class Home extends React.Component {
         if(e.target.value.length === 0){
             window.location.reload();
         }
-        //https://www.food2fork.com/api/search?key={API_KEY}&q=shredded%2
 
         const recipeName = e.target.value;
         e.preventDefault();
