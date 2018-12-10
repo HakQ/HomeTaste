@@ -47,13 +47,16 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
   //using the association from sequelize
   req.user.createRecipe({
     name: req.body.name.toLowerCase(),
-    creator: req.user.username,
+    calories: req.body.calories,
+    time: req.body.time,
+    timeEnd: req.body.timeEnd,
+    serves: req.body.serves,
+    minuteNeeded: req.body.minuteNeeded,
     description: req.body.description,
     instruction: req.body.instruction,
-    likes: req.body.likes,
-    label: req.body.label,
     ingredient: req.body.ingredient,
     private: req.body.private,
+    categories: req.body.categories,
   })
   .then(Recipes => {    
     // Send created Recipes to client
@@ -70,13 +73,16 @@ router.post('/',Redirect.ifNotLoggedIn('/login'), (req, res) => {
 router.put('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/Recipe'),*/(req, res) => {
   Recipe.update({
     name: req.body.name.toLowerCase(),
-    creator: req.user.username,
+    calories: req.body.calories,
+    time: req.body.time,
+    timeEnd: req.body.timeEnd,
+    serves: req.body.serves,
+    minuteNeeded: req.body.minuteNeeded,
     description: req.body.description,
     instruction: req.body.instruction,
-    likes: req.body.likes,
-    label: req.body.label,
     ingredient: req.body.ingredient,
     private: req.body.private,
+    categories: req.body.categories,
   }, 
   { 
     where: {
@@ -102,7 +108,29 @@ router.put('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/R
 router.delete('/', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/posts'),*/ (req, res) => {
   Recipe.destroy({
     where: {
-      name: req.body.name,
+      name: req.body.name.toLowerCase(),
+      userId: req.user.id,
+    },
+    include: [{
+      model: models.User,
+      where: {
+        username: req.user.username,
+      },
+    }],
+  })
+  .then(() => {
+    res.status(200).json( { msg: "Deleted Successfully"} );
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json({msg: "error", details: err});
+  });
+});
+
+//delete  Recipe
+router.delete('/DELETE_ALL', Redirect.ifNotLoggedIn('/login'), /*Redirect.ifNotAuthorized('/posts'),*/ (req, res) => {
+  Recipe.destroy({
+    where: {
       userId: req.user.id,
     },
     include: [{

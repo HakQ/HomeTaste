@@ -4,60 +4,58 @@ module.exports = (sequelize,DataTypes)=>{
 		name:{
 			type: DataTypes.STRING,
 			allowNull: false,
+			unique: true,
 			validate:{
 				notEmpty:true,
 			},
 		},
-		creator:{
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate:{
-				notEmpty:true,
-			},
+		calories:{
+			allowNull: true,
+			type: DataTypes.INTEGER,
+		},
+		time: {
+		  allowNull: true,
+	      type: DataTypes.DATE,
+	    },
+	   	timeEnd: {
+		  allowNull: true,
+	      type: DataTypes.DATE,
+	    },
+	    serves:{
+	    	allowNull: true,
+			type: DataTypes.INTEGER,
+		},
+		minuteNeeded:{
+			allowNull: true,
+			type: DataTypes.INTEGER,
 		},
 		description:{
       		type: DataTypes.TEXT,
-      		allowNull: false,
-      		validate: {
-        		notEmpty: true,
-      		},
+			allowNull: true,
 		},
 	    instruction:{
 	    	type: DataTypes.TEXT,
-	    	allowNull: false,
-	      	validate: {
-	        	notEmpty: true,
-	      	},
-	    },
-	    likes: {
-	    	type: DataTypes.INTEGER,
-	    },
-	    label:{
-	    	type: DataTypes.STRING,
+			allowNull: true,
 	    },
 	    ingredient:{
 	    	type: DataTypes.STRING,
+	    	allowNull: true,
 		},
+		categories:{
+	    	type: DataTypes.STRING,
+	    	allowNull: true,
+		},
+
 		private:{
 			type: DataTypes.BOOLEAN,
+			allowNull: true,
 		},
-		/*
-		calories:{
-			type: DataTypes.INTEGER,
-		},
-		minuteNeeded{
-			type: DataTypes.INTEGER,
-		},
-		serves{
-			type: DataTypes.INTEGER,
-		},
-		photo{}
-		*/
+
+		//photo{}
 	});
 
 	Recipe.associate = (models)=>{
 		models.Recipe.belongsTo(models.User);
-		models.Recipe.belongsToMany(models.Meal,{through: "MealRecipe"});
 	}
 
 	return Recipe;
