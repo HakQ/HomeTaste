@@ -8,6 +8,7 @@ import { FormControl } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Checkbox } from 'react-bootstrap';
+
 import Recipes from "./Recipes";
 import apple from '../images/apple.png';
 import defaultPic from '../images/default.png';
@@ -134,9 +135,11 @@ class AddRecipe extends Component {
                 <div className = "col-2">
                   <label for="inputEmail4">End Time</label>
                 </div>
+
                 <div className = "col-10">
                   <input required type="datetime-local" className="form-control" id="inputEmail4" ref="endTime"/>
                 </div>
+
               </div>
 
               <br />

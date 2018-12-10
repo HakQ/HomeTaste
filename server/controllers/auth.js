@@ -20,7 +20,8 @@ router.post('/signup', (req,res) => {
     password: req.body.password,
     password_hash: req.body.password,
   }).then((user) => {
-    res.json({ msg: "user created" });
+    res.json({ msg: "user created",
+               id: req.user.id, });
   }).catch((e) => {
     res.json(e);
     console.error(e);
