@@ -5,5 +5,4 @@ sudo su - postgres
 createdb -h localhost -U ctp_user MYAPPNAME_development
 exit
 
-Resources I used to help:
-https://github.com/sequelize/sequelize/issues/3493
+make sure you modify the server config file to put your own database there

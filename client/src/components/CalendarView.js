@@ -71,6 +71,7 @@ class CalendarView extends Component {
         let timeEnd = new Date(data[i].timeEnd);
         data[i].start = time;
         data[i].end =  timeEnd;
+        data[i].title = data[i].name;
         //console.log(data[i]);
       }
 
