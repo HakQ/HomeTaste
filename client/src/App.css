@@ -30,3 +30,52 @@
     transform: rotate(360deg);
   }
 }
+
+
+/*stanly's style change*/
+img {
+  width:200px;
+  height:250px;
+  border-radius: 5px;
+  box-shadow: #61dafb 3px 1px;
+}
+h1 {
+  margin-top: 70px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 80px;
+  color: black;
+  padding: 1px;
+}
+
+form {
+ margin-bottom: 10px;
+}
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
+}
+
+.centerMe{
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+/* this is login form*/
+.form-group {
+  margin-top: 30px;
+}
+/* go home button*/
+.active-recipe-button {
+  margin-bottom: 10px;
+}
