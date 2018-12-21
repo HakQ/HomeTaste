@@ -25,8 +25,7 @@ export default class Home extends React.Component {
 
         const recipeName = e.target.value;
         e.preventDefault();
-        // const API_KEY = "d6f0630f1a2543e76bbf7b3ab2b20d8a";
-        const API_KEY = "248278769b9624d2a230cd9fcf96a4d4";
+        const API_KEY = "API-Key";
 
         const API_CALL = `https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeName}&count=10`;
          fetch(API_CALL)

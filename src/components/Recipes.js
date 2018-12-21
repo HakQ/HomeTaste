@@ -2,13 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Recipe from './Recipe';
 
-/* this class renders the items when the user types anything on the search bar*/ 
-/*let recipes = [
-  {publisher: "Epicurious", f2f_url: "http://food2fork.com/view/f22836", title: "Paletas de Aguacate", source_url: "http://www.epicurious.com/recipes/food/views/Paletas-de-Aguacate-366231", recipe_id: "f22836"},
-  {publisher: "All Recipes", f2f_url: "http://food2fork.com/view/2085", title: "Avocado-Lime Shrimp Salad (Ensalada de Camarones con Aguacate y Limon)", source_url: "http://allrecipes.com/Recipe/Avocado-Lime-Shrimp-S…ada-De-Camarones-Con-Aguacate-Y-Limon/Detail.aspx", recipe_id: "2085"},
-  {publisher: "All Recipes", f2f_url: "http://food2fork.com/view/2085", title: "Avocado-Lime Shrimp Salad (Ensalada de Camarones con Aguacate y Limon)", source_url: "http://allrecipes.com/Recipe/Avocado-Lime-Shrimp-S…ada-De-Camarones-Con-Aguacate-Y-Limon/Detail.aspx", recipe_id: "2085"}]*/  
-
-
 class Recipes extends React.Component {
   
   constructor (props){
